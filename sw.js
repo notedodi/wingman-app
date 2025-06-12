@@ -1,4 +1,4 @@
-    const CACHE_NAME = 'wingman-cache-v3'; // Versi cache baru
+    const CACHE_NAME = 'wingman-cache-v5'; // Versi cache baru
     const urlsToCache = [
         '/',
         '/index.html',
