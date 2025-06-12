@@ -1,4 +1,4 @@
-    const CACHE_NAME = 'wingman-cache-v5'; // Versi cache baru
+    const CACHE_NAME = 'wingman-cache-v3';
     const urlsToCache = [
         '/',
         '/index.html',
@@ -29,7 +29,6 @@
     });
 
     self.addEventListener('fetch', event => {
-        // Hanya tangani permintaan GET
         if (event.request.method !== 'GET') {
             return;
         }
@@ -37,14 +36,11 @@
         event.respondWith(
             caches.match(event.request)
             .then(cachedResponse => {
-                // Jika ada di cache, langsung kembalikan
                 if (cachedResponse) {
                     return cachedResponse;
                 }
 
-                // Jika tidak ada di cache, ambil dari network
                 return fetch(event.request).catch(() => {
-                    // Jika network juga gagal, berikan fallback (jika ada)
                     console.log('Fetch failed for:', event.request.url);
                 });
             })
