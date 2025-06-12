@@ -1,4 +1,4 @@
-    const CACHE_NAME = 'wingman-cache-v4';
+    const CACHE_NAME = 'wingman-cache-v3'; // Versi cache baru
     const urlsToCache = [
         '/',
         '/index.html',
@@ -18,7 +18,7 @@
         event.waitUntil(
             caches.open(CACHE_NAME)
             .then(cache => {
-                console.log('Opened cache and caching files');
+                console.log('Opened cache and caching essential assets');
                 return cache.addAll(urlsToCache);
             })
             .catch(err => {
@@ -29,15 +29,23 @@
     });
 
     self.addEventListener('fetch', event => {
+        // Hanya tangani permintaan GET
+        if (event.request.method !== 'GET') {
+            return;
+        }
+
         event.respondWith(
             caches.match(event.request)
-            .then(response => {
-                // Cache hit - return response
-                if (response) {
-                    return response;
+            .then(cachedResponse => {
+                // Jika ada di cache, langsung kembalikan
+                if (cachedResponse) {
+                    return cachedResponse;
                 }
+
+                // Jika tidak ada di cache, ambil dari network
                 return fetch(event.request).catch(() => {
-                    console.log('Fetch failed; network request failed.');
+                    // Jika network juga gagal, berikan fallback (jika ada)
+                    console.log('Fetch failed for:', event.request.url);
                 });
             })
         );
