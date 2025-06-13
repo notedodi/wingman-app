@@ -1,7 +1,8 @@
-    const CACHE_NAME = 'wingman-cache-v5'; 
+    const CACHE_NAME = 'wingman-cache-v6'; 
     const urlsToCache = [
         '/',
         '/index.html',
+        '/splash.html',
         '/icons/icon-192x192.png',
         '/icons/icon-512x512.png'
     ];
