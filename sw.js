@@ -1,4 +1,4 @@
-    const CACHE_NAME = 'wingman-cache-v6'; 
+    const CACHE_NAME = 'wingman-cache-v5'; 
     const urlsToCache = [
         '/',
         '/index.html',
