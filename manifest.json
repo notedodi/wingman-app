@@ -1,8 +1,8 @@
     {
-        "name": "Wingman Transaksi",
+        "name": "Wingman Finance",
         "short_name": "Wingman",
-        "description": "Aplikasi untuk mengelola deposit dan transaksi keuangan dokter.",
-        "start_url": "/index.html",
+        "description": "Solusi modern untuk mengelola keuangan dokter secara efisien.",
+        "start_url": "/splash.html",
         "display": "standalone",
         "background_color": "#ffffff",
         "theme_color": "#2563eb",
